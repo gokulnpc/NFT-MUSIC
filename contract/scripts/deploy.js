@@ -1,7 +1,9 @@
 async function main() {
+    //function
     const toWei = (num) => ethers.utils.parseEther(num.toString())
     let royaltyFee = toWei(0.01);
-    let prices = [toWei(1), toWei(2), toWei(3), toWei(4), toWei(5), toWei(6), toWei(7), toWei(8)]
+    let prices = [toWei(1), toWei(2), toWei(3)]
+    //while deploying we must pay royalty fee to artist
     let deploymentFees = toWei(prices.length * 0.01)
     const [deployer, artist] = await ethers.getSigners();
 
@@ -17,7 +19,7 @@ async function main() {
         { value: deploymentFees }
     );
 
-    // console.log("Smart contract address:", nftMarketplace.address)
+    console.log("Smart contract address:", nftMarketplace.address)
 
     // // For each contract, pass the deployed contract and name to this function to save a copy of the contract ABI and address to the front end.
     // saveFrontendFiles(nftMarketplace, "MusicNFTMarketplace");
